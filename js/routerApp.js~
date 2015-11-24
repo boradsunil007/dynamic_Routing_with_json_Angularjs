@@ -1,0 +1,129 @@
+/**
+ * 
+ */
+
+var myApp = angular.module("myApp", ['ui.router']);
+
+myApp.config(function ($stateProvider, $urlRouterProvider,$sceDelegateProvider) {
+    
+     $urlRouterProvider.otherwise("/form1");
+     $stateProvider
+        .state("kotak", {
+            url: "/kotak",
+            templateUrl: "form1.html",
+            controller:'kotakCtrl'
+        })
+     
+        .state("sbi", {
+            url:"/sbi",
+            templateUrl: "form2.html",   
+            controller:'sbiCtrl'
+        })
+     
+        .state("boi", {
+            url:"/boi",
+            templateUrl:"form3.html",
+            controller:'boiCtrl'
+        })
+     
+        .state("axis", {
+                url:"/axis",
+                templateUrl: "form4.html",
+                controller:'axisCtrl'
+            });
+    
+    $sceDelegateProvider.resourceUrlWhitelist(['self', '**']);
+    
+});
+
+myApp.constant('URL', 'data/');
+
+//--------------Controllers-------------//
+myApp.controller('kotakCtrl', function (DataService,ChartService) {
+    var ctrl = this;
+
+    ctrl.content = [];
+
+    ctrl.fetchContent = function () {
+        DataService.getData().then(function (result) {
+            ctrl.content = result.data;
+        });
+ DataService.getData().then(function (result) {
+	console.log(result.data);
+            ctrl.content = result.data;
+        });
+    };
+
+    ctrl.fetchContent();
+});
+
+//--------------Services-------------//
+myApp.factory('DataService', function ($http, URL) {
+    var getData = function () {
+        return $http.get(URL + 'content.json');
+    };
+
+    return {
+        getData: getData
+    };
+});
+
+myApp.factory('TemplateService', function ($http, URL) {
+    var getTemplates = function () {
+        return $http.get(URL + 'templates.json');
+    };
+
+    return {
+        getTemplates: getTemplates
+    };
+});
+myApp.factory('ChartService', function ($http, URL) {
+    var getData = function () {
+        return $http.get(URL + 'charts.json');
+    };
+
+    return {
+        getData: getData
+    };
+});
+//-----------------Directives-------------------//
+myApp.directive('contentItem', function ($compile, TemplateService) {
+    var getTemplate = function (templates, contentType) {
+        var template = '';
+
+        switch (contentType) {
+            case 'image':
+                template = templates.imageTemplate;
+                break;
+            case 'video':
+                template = templates.videoTemplate;
+                break;
+            case 'notes':
+                template = templates.noteTemplate;
+                break;
+        }
+
+        return template;
+    };
+
+    var linker = function (scope, element, attrs) {
+        scope.rootDirectory = 'images/';
+
+        TemplateService.getTemplates().then(function (response) {
+            var templates = response.data;
+
+            element.html(getTemplate(templates, scope.content.content_type));
+
+            $compile(element.contents())(scope);
+        });
+    };
+
+    return {
+        restrict: 'E',
+        link: linker,
+        scope: {
+            content: '='
+        }
+    };
+});
+

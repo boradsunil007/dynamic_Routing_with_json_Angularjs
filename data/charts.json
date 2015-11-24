@@ -1,0 +1,81 @@
+{
+"subtitle": {
+                "text": "Click and drag to zoom in."
+            },
+
+"chart":{
+
+"position":{
+"x":500,
+"y":-35
+
+}
+
+},
+
+ "xAxis": [{
+                "type": "datetime"
+            }],
+            "yAxis": [
+
+                {
+
+                    "min": 0,
+                    "allowDecimals": false,
+                    "title": {
+                        "text": "number of notification",
+                        "style": {
+                            "color": "#80a3ca"
+                        }
+                    },
+                    "labels": {
+                        "format": "{value}",
+                        "style": {
+                            "color": "#80a3ca"
+                        }
+                    }
+
+
+                },
+                { 
+                    "min": 0,
+                    "allowDecimals": false,
+                    "title": {
+                        "text": "usage time",
+                        "style": {
+                            "color": "#c680ca"
+                        }
+                    },
+                    "labels": {
+                        "format": "{value}",
+                        "style": {
+                            "color": "#c680ca"
+                        }
+                    },
+                    "opposite": true
+
+                }
+            ],
+             "series": [
+            {
+                "id": "iphoneNotificationData",
+                "name": "Notifications",
+                "data": [[1426204800000,12],[1426464000000,6],[1426550400000,10],[1426636800000,3]],
+                "type": "column",
+                "yAxis": 0,
+                "color": "#80a3ca"
+            },
+            {
+                "id": "iphoneUsageData",
+                "name": "Usage Time",
+                "data": [[1426291200000,5],[1426809600000,26]],
+                "type": "line",
+                "yAxis": 1,
+                "tooltip": {
+                    "valueSuffix": " sec"
+                },
+                "color": "#c680ca"
+            }
+        ]
+
+}

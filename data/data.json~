@@ -1,0 +1,22 @@
+{
+    "kotak": [
+        {
+            "menuName": "kotak"
+        },
+        {
+            "content_type": "image",
+            "title": "Image 00",
+            "data": "temp-photo.jpg"
+        },
+        {
+            "content_type": "video",
+            "title": "Video 00",
+            "data": "http://player.vimeo.com/video/37176398"
+        },
+        {
+            "content_type": "notes",
+            "title": "Notes 00",
+            "data": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pulvinar pretium felis. Vivamus nibh felis, condimentum sit amet laoreet luctus, posuere auctor lorem. Nullam malesuada."
+        }
+    ]
+}
