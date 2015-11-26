@@ -1,0 +1,31 @@
+<div>
+   <form ng-submit="page.createPageItem(page.p)">
+	   <input type="hidden" ng-model="page.p.id"/>
+		<table>
+			<tr>
+				<td>Name
+				</td>
+				<td><input type="text" ng-model="page.p.name"/>
+				</td>
+			</tr>
+			<tr>
+				<td>API
+				</td>
+				<td><select  ng-model="page.p.widget">
+					 <option ng-repeat="option in page.widgetList" value="{{option.widget}}">{{option.widget}}</option>
+					</select>
+					
+					
+					<!--<input type="text" ng-model="menu.m.page"/>-->
+				</td>
+			</tr>
+			
+		</table>
+		<input type="submit" value="add" ></submit>
+	</form>
+
+   
+	Grid with client side pagination
+	<div class="gridStyle" ui-grid="page.gridOptions" ui-grid-pagination ui-grid-resize-columns ui-grid-selection></div>
+	<!--<button ng-click="selectRow()">Edit</button>-->
+</div>

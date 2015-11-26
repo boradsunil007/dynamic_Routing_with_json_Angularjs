@@ -1,0 +1,82 @@
+<div>
+   <form ng-submit="menu.createMenuItem(menu.m)">
+	   <input type="hidden" ng-model="menu.m.id"/>
+		<table>
+			<tr>
+				<td>Name
+				</td>
+				<td><input type="text" ng-model="menu.m.name"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Page
+				</td>
+				<td><select  ng-model="menu.m.page" multiple>
+					 <option ng-repeat="option in menu.pages" value="{{option.page}}">{{option.page}}</option>
+					</select>
+					
+					
+					<!--<input type="text" ng-model="menu.m.page"/>-->
+				</td>
+			</tr>
+			<tr>
+				<td>Url
+				</td>
+				<td><input type="text" ng-model="menu.m.icon"/>
+				</td>
+			</tr>
+		</table>
+		<input type="submit" value="add" ></submit>
+	</form>
+
+   
+	Grid with client side pagination
+	<div class="gridStyle" ui-grid="menu.gridOptions" ui-grid-pagination ui-grid-resize-columns ui-grid-selection></div>
+	<!--<button ng-click="selectRow()">Edit</button>-->
+</div>
+
+
+<!--<div>
+    <div class="gridStyle" ui-grid="menu.gridOptions" ui-grid-pagination  ui-grid-resize-columns ui-grid-selection></div>
+</div>
+<br/>
+
+<div>
+	<button ng-click="currentTpl='/addMenu.html';menu.set=true">Add</button>
+</div><br/>
+<div id="tpl-content" ng-include="addMenu.html"  ng-show="menu.set"></div>
+<script type="text/ng-template" id="addMenu.html">
+	<form ng-submit="menu.createMenuItem(menu.m)">
+		<table>
+			<tr>
+				<td>Name
+				</td>
+				<td><input type="text" ng-model="menu.m.name"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Page
+				</td>
+				<td><input type="text" ng-model="menu.m.page"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Url
+				</td>
+				<td><input type="text" ng-model="menu.m.icon"/>
+				</td>
+			</tr>
+		</table>
+		<input type="submit" value="add" ></submit>
+		<input type="submit" value="edit" ></submit>
+	</form>
+</script>-->
+
+
+<style>
+	.gridStyle {
+		border: 1px solid rgb(000,000,000);
+		width: auto; 
+		height: auto;
+	}
+</style>

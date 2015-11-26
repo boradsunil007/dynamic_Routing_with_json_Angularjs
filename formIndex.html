@@ -3,15 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-     <script type="text/javascript" src="vendor/jquery.min.js"></script>
-   
-    <script src="js/routerApp.js"></script>
-   <script type="text/javascript" src="js/ocLazyLoad.js"></script>
-   <link rel="stylesheet" type="text/css" href="css/panel.css">
-     <link rel="stylesheet" type="text/css" href="css/layout.css">
+	<script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="vendor/jquery.min.js"></script>
+<!--<script src="http://code.highcharts.com/highcharts.src.js"></script>-->
 
+	<script src="js/routerApp.js"></script>
+
+	<script type="text/javascript" src="js/ocLazyLoad.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/panel.css">
+	<link rel="stylesheet" type="text/css" href="css/layout.css">
+	<link rel="stylesheet"  href="angular-ui-grid/ui-grid.min.css"> 	
+	<script src="angular-ui-grid/ui-grid.js"></script>
+	<script src="ui-bootstrap-tpls-0.9.0.min.js"></script>
 </head>
 <body data-ng-app="myApp">
     <h1>Components View</h1>
@@ -22,35 +26,22 @@
     </div>
     <div id="menuleftcontent" ng-controller="mainCtrl as C">
         <ul>
-         <div ng-repeat="(country,goals) in items">
-            <div ui-sref="{{country}}" ng-click="clickOn($event)" id="{{country}}"><a href="">{{country}}</a></div>
+         <div ng-repeat="country in items">
+            <div ui-sref="{{country.name}}" ng-click="clickOn($event)" id="{{country.pageName}}"><a href="">{{country.name}}</a></div>
             </div>
+			<div ui-sref="menu" >Menu</div>
+			<div ui-sref="widget" >widget</div>
+			<div ui-sref="page" >page</div>
         </ul>
+		
        
-        <ul id="menu">
+       <!-- <ul id="menu">
             <div ui-sref="kotak" ng-click="abc()"><a href="">kotak</a></div><br><br>
             <div ui-sref="as" ng-click="as(123)"><a href="">as</a></div><br><br>
             <div ui-sref="sbi" ng-click="sbi()"><a href="">State Bank Of India</a></div><br><br><br>
             <div ui-sref="boi"><a href="">Bank of India</a></div><br><br>
             <div ui-sref="axis"><a href="">Axis</a></div><br><br>
-                
-<!--
-             <table border = "0">
-               <tr>
-                  <td>Enter first name:</td>
-                  <td><input name = "firstname" type = "text" ng-model = "firstName" required > 
-                     <span style = "color:red" ng-show = "studentForm.firstname.$invalid && studentForm.firstname.$dirty">
-                        <span ng-show = "studentForm.firstname.$error.required">First Name is required.</span>
-                     </span>
-                  </td>
-               </tr>
--->
-            
-<!--
-            <li><a href="#firstcontent">first</a></li>
-            <li><a href="#secondcontent">second</a></li>
--->
-        </ul>
+        </ul>-->
     </div>
     
 </div>
